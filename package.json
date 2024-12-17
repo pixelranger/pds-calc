@@ -1,0 +1,28 @@
+{
+  "name": "vuejs-widget",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vee-validate/i18n": "^4.14.7",
+    "@vee-validate/rules": "^4.14.7",
+    "axios": "^1.7.9",
+    "sweetalert2": "^11.6.13",
+    "vee-validate": "^4.14.7",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "autoprefixer": "^10.4.16",
+    "html2pdf.js": "^0.10.2",
+    "postcss": "^8.4.32",
+    "sass": "^1.77.4",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.0"
+  }
+}
