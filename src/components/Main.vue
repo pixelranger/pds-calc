@@ -18,104 +18,166 @@
         <Form ref="feedbackForm" name="feedbackFrom" class="mb-10" v-slot="{ errors }">
           <div class="">
             <template v-if="!isCalculated">
-              <div class="mb-2 text-left">
-                <span class="font-bold">Пол</span>
-              </div>
-              <div class="flex justify-start items-center gap-x-3">
-                <input id="man" v-model="form.gender" type="radio" value="m">
-                <label for="man">Мужчина</label>
-                <input id="woman" v-model="form.gender" type="radio" value="w">
-                <label for="woman">Женщина</label>
-              </div>
-
-              <div class="grid grid-cols-12 gap-x-4">
-                <div class="col-span-12 md:col-span-12">
-                  <p class="mt-3 mb-2 md:text-left leading-tight">
-                    <label for="pds-form-income"><b>Ежемесячный доход</b></label>
-                  </p>
+              <div class="flex-grow mt-1 mb-6">
+                <div class="mb-2 text-left">
+                  <span class="font-bold">Пол</span>
                 </div>
-                <div class="col-span-12 md:col-span-12">
-                  <Field
-                      as="select"
-                      id="pds-form-income"
-                      v-model="form.income"
-                      name="income"
-                      label="Ежемесячный доход"
-                      class="form-control block w-full"
-                      required
-                  >
-                    <option value="0">
-                      До 80 тыс. руб
-                    </option>
-                    <option value="1">
-                      От 80 тыс. до 150 тыс. руб
-                    </option>
-                    <option value="2">
-                      Более 150 тыс. руб
-                    </option>
-                  </Field>
+                <div class="flex justify-start items-center gap-x-3">
+                  <input id="man" v-model="form.gender" type="radio" value="m">
+                  <label for="man">Мужчина</label>
+                  <input id="woman" v-model="form.gender" type="radio" value="w">
+                  <label for="woman">Женщина</label>
                 </div>
               </div>
-              <text-input
-                  v-model="form.age"
-                  name="Текущий возраст"
-                  label="Текущий возраст (лет)"
-                  placeholder="Текущий возраст (лет)"
-                  :min="18"
-                  :max="85"
-              />
 
-              <div :key="form.endAge">
+              <div class="flex-grow mt-1 mb-5">
+                <div class="grid grid-cols-12 gap-x-4">
+                  <div class="col-span-12 md:col-span-12">
+                    <p class="mt-3 mb-2 md:text-left leading-tight">
+                      <label for="pds-form-income"><b>Ежемесячный доход</b></label>
+                    </p>
+                  </div>
+                  <div class="col-span-12 md:col-span-12">
+                    <Field
+                        as="select"
+                        id="pds-form-income"
+                        v-model="form.income"
+                        name="income"
+                        label="Ежемесячный доход"
+                        class="form-control block w-full"
+                        required
+                    >
+                      <option value="0">
+                        До 80 тыс. руб
+                      </option>
+                      <option value="1">
+                        От 80 тыс. до 150 тыс. руб
+                      </option>
+                      <option value="2">
+                        Более 150 тыс. руб
+                      </option>
+                    </Field>
+                  </div>
+                </div>
+              </div>
+              <div :key="form.age">
                 <text-input
-                    v-model="form.endAge"
-                    wrapper-class="flex-grow mt-1"
-                    name="Возраст окончания участия в программе"
-                    label="Возраст окончания участия в программе (лет)"
-                    placeholder="Возраст окончания участия в программе (лет)"
-                    :max="100"
-                    :min="ageEndField.min"
+                    v-model="form.age"
+                    name="Текущий возраст"
+                    label="Текущий возраст (лет)"
+                    placeholder="Текущий возраст (лет)"
+                    wrapper-class="flex-grow mt-1 mb-2"
+                    :min="18"
+                    :max="85"
+                />
+              </div>
+
+              <div class="range-selector mt-2 pt-1">
+                <div class="range-selector-label range-selector-min text-secondary">
+                  18 лет
+                </div>
+                <div class="range-selector-label range-selector-max text-secondary">
+                  85 лет
+                </div>
+                <input
+                    v-model="form.age"
+                    type="range"
+                    min="18"
+                    max="85"
+                    step="1"
+                    class="range-selector-input"
+                >
+              </div>
+
+              <div :key="form.accumulationPeriod">
+                <text-input
+                    v-model="form.accumulationPeriod"
+                    wrapper-class="flex-grow mt-5"
+                    name="Период накопления"
+                    label="Период накопления (лет)"
+                    placeholder="Период накопления (лет)"
+                    :min="accumulationPeriodField.min"
+                    :max="accumulationPeriodField.max"
                     :is-disabled="true"
                 />
               </div>
-              <div class="text-left text-sm text-gray-500 mt-2 mb-6">
-                Срок участия в программе – 15 лет. В отдельных случаях он может быть меньше, уточняйте условия в НПФ
+              <div class="range-selector mt-2 pt-1">
+                <div class="range-selector-label range-selector-min text-secondary">
+                  {{ accumulationPeriodField.min }} лет
+                </div>
+                <div class="range-selector-label range-selector-max text-secondary">
+                  {{ accumulationPeriodField.max }} лет
+                </div>
+                <input
+                    v-model="form.accumulationPeriod"
+                    type="range"
+                    :min="accumulationPeriodField.min"
+                    :max="accumulationPeriodField.max"
+                    step="1"
+                    class="range-selector-input"
+                >
               </div>
+
+              <div :key="form.period">
+                <text-input
+                    v-model="form.period"
+                    wrapper-class="flex-grow mt-5"
+                    name="Срок ежемесячных выплат"
+                    label="Срок срочной выплаты (лет)"
+                    placeholder="Введите количество лет"
+                    :max="30"
+                    :min="2"
+                />
+              </div>
+              <div class="range-selector mt-2 pt-1">
+                <div class="range-selector-label range-selector-min text-secondary">
+                  2 года
+                </div>
+                <div class="range-selector-label range-selector-max text-secondary">
+                  30 лет
+                </div>
+                <input
+                    v-model="form.period"
+                    type="range"
+                    :min="2"
+                    :max="30"
+                    step="1"
+                    class="range-selector-input"
+                >
+              </div>
+
               <text-input
                   v-model="form.sum"
-                  name="Сумма взноса в месяц"
-                  label="Сумма взноса в месяц (руб)"
+                  name="Сумма взносов в месяц"
+                  label="Сумма взносов в месяц (руб)"
                   placeholder="Введите сумму взноса в месяц (руб)"
                   :min="1000"
                   :max="1000000"
               />
 
               <text-input
-                  v-model="form.period"
-                  name="Срок ежемесячных выплат"
-                  label="Планируемый период выплат (от 1 года)"
-                  placeholder="Введите количество лет"
-                  :max="30"
-                  :min="1"
-              />
-
-              <text-input
                   v-model="form.sumAccount"
+                  wrapper-class="flex-grow mt-5 mb-6"
                   name="Сумма со счёта ОПС"
-                  label="Сумма со счёта ОПС (руб)"
+                  label="Сумма пенсионных накоплений по ОПС (руб)"
                   placeholder="Введите сумму"
                   :max="5000000"
                   :min="0"
                   :is-required="false"
               />
 
-              <div class="flex justify-start items-center gap-x-3">
-                <input id="ops" v-model="form.ops" type="checkbox">
-                <label for="ops">Учитывать накопления ОПС</label>
+              <div class="flex-grow mt-1 mb-4">
+                <div class="flex justify-start items-center gap-x-3">
+                  <input id="ops" v-model="form.ops" type="checkbox">
+                  <label for="ops">Переводить свои пенсионные накопления из ОПС в ПДС</label>
+                </div>
               </div>
 
-              <div class="flex justify-start items-center gap-x-3">
-                <input id="tax" v-model="form.taxDeduction" type="checkbox">
-                <label for="tax">Вкладывать налоговый вычет в программу</label>
+              <div class="flex-grow mt-1 mb-6">
+                <div class="flex justify-start items-center gap-x-3">
+                  <input id="tax" v-model="form.taxDeduction" type="checkbox">
+                  <label for="tax">Перечислять полученный налоговый вычет в программу</label>
+                </div>
               </div>
 
               <button :disabled="Object.keys(errors).length" class="right-btn" @click.prevent="calculate">

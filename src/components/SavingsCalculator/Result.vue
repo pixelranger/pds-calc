@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<div class="result-top-box theme-light">
+		<div class="bg-[#eff4f8] result-top-box">
 			<div class="flex justify-between items-center gap-x-3 mb-5">
 				<div class="text-left result-title">
 					Итоговая сумма накоплений в программе
 				</div>
-				<div class="ml-3 fs-3 text-primary">
+				<div class="text-2xl ml-3 text-primary">
 					{{ formatNumberToCurrency(data.G10) }}
 				</div>
 			</div>
