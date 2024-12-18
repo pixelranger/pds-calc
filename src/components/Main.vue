@@ -798,28 +798,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.te-02 {
-  .panel_background-image {
-    display: none;
-    @screen lg {
-      display: block;
-    }
-  }
-}
-
-.ui-keyboard-case {
-  display: none;
-
-}
-
-.ui-keyboard-preview {
-  margin: 10px;
-  padding: 10px;
-  width: 400px;
-}
-</style>
-
 <style lang="scss" scoped>
 .form {
   width: 100%;
@@ -1061,66 +1039,6 @@ export default {
   margin: 0 -5px 1.25rem;
 }
 
-/* The slider itself */
-.range-selector-input {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 1px;
-  background: #333333;
-  outline: none;
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s;
-  transition: opacity .2s;
 
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.range-selector {
-  @apply relative;
-  line-height: 2rem;
-}
-
-.range-selector-label {
-  @apply absolute top-0 text-xs;
-  // color: #A3A3A3;
-
-}
-
-.range-selector-min {
-  @apply left-0;
-}
-
-.range-selector-max {
-  @apply right-0;
-}
-
-// Range slider handle
-.range-selector-input {
-  position: relative;
-  cursor: grab;
-
-  // Webkit specified
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #B144F9;
-    cursor: grab;
-  }
-
-  // Mozilla specified
-  &::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #B144F9;
-    cursor: grab;
-  }
-}
 
 </style>
