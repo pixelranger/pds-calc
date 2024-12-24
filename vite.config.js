@@ -11,14 +11,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  base: './',
   build: {
+    outDir: './pds-calculator',
     rollupOptions: {
       input: {
         widget: fileURLToPath(new URL('./src/main.js', import.meta.url)),
         style: './src/assets/styles/main.scss'
       },
       output: {
-        inlineDynamicImports: false,
         entryFileNames: '[name].js',       // for JS files
         chunkFileNames: '[name].js',      // for code-splitted chunks
         assetFileNames: '[name].[ext]'    // for other assets
