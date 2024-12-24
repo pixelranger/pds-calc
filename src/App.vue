@@ -5,13 +5,15 @@
 
   <!--  Encapsulating all css rules for shadow-dom-->
   <component :is="'style'">{{styles}}</component>
+  <component :is="'style'">{{widgetStyles}}</component>
 </template>
 
 
 
 <script setup>
 import { defineProps } from 'vue';
-import styles from '../pds-calculator/widget.css?inline';
+import widgetStyles from '../pds-calculator/widget.css?inline';
+import styles from '../pds-calculator/style.css?inline';
 import Main from '@/components/Main.vue';
 
 defineProps({
