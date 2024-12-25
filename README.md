@@ -16,7 +16,7 @@ npm run dev
 - добавить тэг custom element в необходимое сесто на странице: <pds-calculator></pds-calculator>
 - подключить скрипт виджета в конце body на странице: <script type="module" src="./pds-calculator/widget.js" defer></script>
 - обязательно добавить свойство defer, для того чтобы скрипт был загружен после объявления custom element в разметке.
-
+- передать в custom element свойство apiUrl, для того чтобы виджет был обновлен при изменении api.
 
 <div id="pds-calc-container"></div>
 <script>!function(){let e=document.createElement("iframe");e.src="https://xn--80apaohbc3aw9e.xn--p1ai/pds-calc-widget/widget.html",e.width="600px",e.height="1000px",e.style.border="none";let t=document.getElementById("pds-calc-container");t?t.appendChild(e):console.error("Container не найден")}();</script>
