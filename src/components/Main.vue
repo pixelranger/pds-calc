@@ -274,6 +274,8 @@
       </vue-html2pdf>
     </div>
   </div>
+
+  <CustomModal v-model="modalState" />
 </template>
 
 <script>
@@ -287,6 +289,7 @@ import { email, integer, max, max_value, min, min_value, required } from '@vee-v
 import { localize, setLocale } from '@vee-validate/i18n';
 import ru from '@vee-validate/i18n/dist/locale/ru.json';
 import axios from 'axios';
+import {useModal, CustomModal} from "@/components/CustomModal";
 
 defineRule('required', required);
 defineRule('integer', integer);
@@ -309,12 +312,19 @@ export default {
     TextInput,
     VueHtml2pdf,
     Result,
+    CustomModal
   },
   props: {
     apiUrl: {
       type: String,
       default: 'https://app-dev.xn--80apaohbc3aw9e.xn--p1ai',
     },
+  },
+  setup() {
+    const { state: modalState, openModal } = useModal();
+    return {
+      modalState, openModal
+    }
   },
   data() {
     return {
@@ -704,7 +714,6 @@ export default {
     async generateReport() {
       this.$refs.html2Pdf.generatePdf();
     },
-
     calculate() {
       this.doCalculations();
       this.isCalculated = true;
@@ -751,20 +760,20 @@ export default {
         try {
           axios.post(`${this.apiUrl}/api/pds/send-mail/`, formData).then((response) => {
             this.loading = false;
-            Swal.fire({
-              icon: 'success',
+
+            this.openModal({
               title: 'Готово',
-              text: 'Ваш расчёт отправлен на почту',
+              text: 'Ваш расчёт отправлен на почту'
             });
           });
 
           this.sendData('email', this.sendingData.email);
         } catch (error) {
           this.loading = false;
-          Swal.fire({
-            icon: 'error',
+
+          this.openModal({
             title: 'Ошибка',
-            text: 'Не удалось отправить расчёт',
+            text: 'Не удалось отправить расчёт'
           });
 
           console.error(error);
