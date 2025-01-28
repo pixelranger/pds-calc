@@ -12,7 +12,6 @@
     "@vee-validate/i18n": "^4.14.7",
     "@vee-validate/rules": "^4.14.7",
     "axios": "^1.7.9",
-    "sweetalert2": "^11.6.13",
     "vee-validate": "^4.14.7",
     "vue": "^3.3.8"
   },

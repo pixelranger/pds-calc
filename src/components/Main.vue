@@ -279,7 +279,6 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
 import TextInput from './SavingsCalculator/TextInput.vue';
 import Result from './SavingsCalculator/Result.vue';
 import VueHtml2pdf from '@/components/vue-html2pdf.vue';
