@@ -47,13 +47,13 @@
                         class="form-control block w-full"
                         required
                     >
-                      <option value="0">
+                      <option value="1">
                         До 80 тыс. руб
                       </option>
-                      <option value="1">
+                      <option value="2">
                         От 80 тыс. до 150 тыс. руб
                       </option>
-                      <option value="2">
+                      <option value="3">
                         Более 150 тыс. руб
                       </option>
                     </Field>
